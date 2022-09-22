@@ -2,11 +2,11 @@ import './App.css';
 import { Box, ChakraProvider, Heading, Text, Button, VStack } from '@chakra-ui/react'
 import CardContainer from './components/Card'
 import React, {useState} from 'react';
-
+import TypeWriter from './components/TypeWriter';
 
 function App() {
   const [contentStr, setContentStr] = useState('')
-  const [content, setContent] = useState(<Heading >Hi, I'm Nida :)</Heading>)
+  const [content, setContent] = useState(<TypeWriter />)
 
   function handleNav(e) {
     console.log("here")
@@ -14,7 +14,7 @@ function App() {
     setContentStr(target) 
     console.log(target)
     if(target === 'Home'){
-      setContent(<Heading >Hi, I'm Nida :)</Heading>)
+      setContent(<TypeWriter />)
     } 
     if(target === 'Projects'){
       setContent(<CardContainer />)
@@ -30,7 +30,6 @@ function App() {
         <Button style={styles.navBtn} variant='link' onClick={(e) => handleNav(e)}>About</Button>
         </div>
         <div style={contentStr === 'Projects' ? styles.headingProjects : styles.heading}>
-          {/* <ColoredLine color="red"/> */}
           {content}
         </div>
         <div style={{paddingLeft: "12px", paddingRight: "12px"}}>
@@ -76,17 +75,3 @@ const styles = {
     marginRight: '10px',
   }
 }
-
-
-
-// const ColoredLine = ({ color }) => (
-//   <hr
-//       style={{
-//           color: color,
-//           backgroundColor: color,
-//           height: 1,
-//           marginLeft: 0,
-//           marginRight: 0
-//       }}
-//   />
-// );
